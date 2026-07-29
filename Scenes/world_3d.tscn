@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://oq20q8miyvsa"]
+
+[ext_resource type="Script" uid="uid://bro3o5k5uwsye" path="res://Scripts/Components/Camera/World3DComponent.cs" id="1_1j568"]
+[ext_resource type="Script" uid="uid://dkpcix6ryvuwm" path="res://Scripts/Components/Camera/HexGridOverlay3DComponent.cs" id="1_5pobv"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_rwaib"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_1j568"]
+[ext_resource type="PackedScene" uid="uid://bh20s8vjtrd21" path="res://Assets/3D/KayKit_Medieval_Hexagon_Pack/tiles/base/hex_grass.fbx" id="3_374ew"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_30yqp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kqqpj"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_5pobv"]
+sky_material = SubResource("ProceduralSkyMaterial_kqqpj")
+
+[sub_resource type="Environment" id="Environment_e0ebs"]
+background_mode = 2
+sky = SubResource("Sky_5pobv")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfxi6"]
+albedo_color = Color(0.29411766, 0, 1, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_03i3r"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array()],
+"names": PackedStringArray("hex_grass", "hex_grass", "surface_material_override/0"),
+"node_count": 2,
+"node_ids": PackedInt32Array(562220799, 5254225),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("3_374ew"), SubResource("StandardMaterial3D_kfxi6")],
+"version": 3
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ke0rt"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_bgqy3"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array()],
+"names": PackedStringArray("hex_grass", "hex_grass", "surface_material_override/0"),
+"node_count": 2,
+"node_ids": PackedInt32Array(562220799, 5254225),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("3_374ew"), SubResource("StandardMaterial3D_ke0rt")],
+"version": 3
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8exd3"]
+albedo_color = Color(0.35692272, 0.35692272, 0.35692272, 1)
+rim_enabled = true
+rim = 0.0
+
+[sub_resource type="PackedScene" id="PackedScene_7lipw"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array()],
+"names": PackedStringArray("hex_grass", "hex_grass", "surface_material_override/0"),
+"node_count": 2,
+"node_ids": PackedInt32Array(562220799, 5254225),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("3_374ew"), SubResource("StandardMaterial3D_8exd3")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_30yqp"]
+script = ExtResource("3_1j568")
+
+[node name="World3DComponent" type="Node3D" unique_id=1360330812]
+script = ExtResource("1_1j568")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1996365010]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=746145806]
+environment = SubResource("Environment_e0ebs")
+
+[node name="HexGridOverlay3DComponent" type="Node3D" parent="." unique_id=494588043]
+script = ExtResource("1_5pobv")
+PurpleTileScene = SubResource("PackedScene_03i3r")
+PinkTileScene = SubResource("PackedScene_bgqy3")
+GreyTileScene = SubResource("PackedScene_7lipw")
+TileScaleMultiplier = 0.8
+
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=526330480]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 200, 0)
+script = ExtResource("2_rwaib")
+follow_mode = 6
+tween_resource = SubResource("Resource_30yqp")
+host_layers = 2
+follow_distance = 200.0
+spring_length = 200.0
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1778573569]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 200, 0)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=390949796]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_30yqp")
+host_layers = 2
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
