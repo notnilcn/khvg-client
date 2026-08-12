@@ -2,21 +2,24 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using SpacetimeDB.Types;
 
 /// <summary>
-/// Player abilities that manipulate live enemy bullets near a point: DeleteNear, SlowNear,
-/// SplitNear and AttractNear (blackhole-style homing). All four share the FindBulletsNear
-/// proximity query over the live DirectionalBullets2D instances tracked by
-/// BulletSpawnerComponent, which is why they live in one component. Everything here is
-/// client-local — no reducers — consistent with the self-reported report_hit trust model.
-/// Triggered for now by debug hotkeys (ability_delete/slow/split/attract, keys 6-9) polled
+/// Player abilities that manipulate live enemy bullets near a point: DeleteNear, SplitNear
+/// and AttractNear (blackhole-style homing). All four share the FindBulletsNear proximity
+/// query over the live DirectionalBullets2D instances tracked by BulletSpawnerComponent,
+/// which is why they live in one component.
+/// Casts are networked by relaying the cast itself: the caster applies the effect locally
+/// (optimistic) and calls the control_bullets reducer, which appends a BulletControlEvent
+/// row; every other client applies the same effect on row insert via the child
+/// BulletControlEventBinder (own echoes are skipped via cast_by). Each client resolves the
+/// proximity query against its own bullets, so edge-of-radius results can differ slightly.
+/// Triggered for now by debug hotkeys (ability_delete/split/attract, keys 6-9) polled
 /// in _Process; the public methods are the real API for a future ability system.
 /// </summary>
-public partial class BulletAbilityComponent : Component
+public partial class BulletControllerComponent : Component
 {
     [Export] public float Radius = 120f;
-    [Export] public float SlowFactor = 0.35f;
-    [Export] public float DefaultSlowSpeed = 100f;
     [Export] public int SplitCount = 4;
     [Export] public float SplitSpread = Mathf.Pi / 3f;
     [Export] public float SplitLifetime = 3f;
@@ -24,26 +27,53 @@ public partial class BulletAbilityComponent : Component
     [Export] public float HomingSmoothing = 5f;
 
     private BulletSpawnerComponent spawner = null!;
+    private TableBinderComponent bulletControlEventBinder = null!;
 
     protected override Type[] GetRequiredComponents() => [typeof(BulletSpawnerComponent)];
+
+    public override void _Ready()
+    {
+        base._Ready();
+        bulletControlEventBinder = GetNode<TableBinderComponent>("BulletControlEventBinder");
+    }
 
     protected override void OnEntityReady() => spawner = GetSibling<BulletSpawnerComponent>()!;
 
     public override void _Process(double delta)
     {
         bool delete = Input.IsActionJustPressed("ability_delete");
-        bool slow = Input.IsActionJustPressed("ability_slow");
         bool split = Input.IsActionJustPressed("ability_split");
         bool attract = Input.IsActionJustPressed("ability_attract");
-        if (!delete && !slow && !split && !attract) return;
+        if (!delete && !split && !attract) return;
 
         var playerPos = GetLocalPlayerPosition();
         if (playerPos == null) return;
+        var point = playerPos.Value;
+        var target = ((BulletManager)Entity!).GetGlobalMousePosition();
 
-        if (delete) DeleteNear(playerPos.Value, Radius);
-        if (slow) SlowNear(playerPos.Value, Radius, SlowFactor);
-        if (split) SplitNear(playerPos.Value, Radius);
-        if (attract) AttractNear(playerPos.Value, Radius, ((BulletManager)Entity!).GetGlobalMousePosition());
+        // Optimistic local apply; remote clients apply on the BulletControlEvent echo.
+        if (delete) DeleteNear(point, Radius);
+        if (split) SplitNear(point, Radius);
+        if (attract) AttractNear(point, Radius, target);
+
+        var conn = GameManager.Conn;
+        if (conn == null) return; // offline debug use stays local-only
+        if (delete) conn.Reducers.ControlBullets(BulletControlKind.Delete, point.X, point.Y, Radius, 0f, 0f);
+        if (split) conn.Reducers.ControlBullets(BulletControlKind.Split, point.X, point.Y, Radius, 0f, 0f);
+        if (attract) conn.Reducers.ControlBullets(BulletControlKind.Attract, point.X, point.Y, Radius, target.X, target.Y);
+    }
+
+    /// BulletControlEventBinder RowInserted handler (wired in main.tscn). Replays another
+    /// player's cast locally; the caster's own echo is skipped (already applied optimistically).
+    private void OnBulletControlEventRow()
+    {
+        var row = (BulletControlEvent)bulletControlEventBinder.LastRow!;
+        if (GameManager.IsLocal(row.CastBy)) return;
+        var point = new Vector2(row.X, row.Y);
+        if (row.Kind is BulletControlKind.Delete) DeleteNear(point, row.Radius);
+        else if (row.Kind is BulletControlKind.Split) SplitNear(point, row.Radius);
+        else if (row.Kind is BulletControlKind.Attract)
+            AttractNear(point, row.Radius, new Vector2(row.TargetX, row.TargetY));
     }
 
     private static Vector2? GetLocalPlayerPosition()
@@ -87,18 +117,6 @@ public partial class BulletAbilityComponent : Component
     {
         foreach (var (inst, index) in FindBulletsNear(point, radius))
             inst.Call("disable_bullet", index);
-    }
-
-    /// Permanently rescales the speed of nearby bullets (no restore timer in v1).
-    public void SlowNear(Vector2 point, float radius, float factor)
-    {
-        foreach (var (inst, index) in FindBulletsNear(point, radius))
-        {
-            float speed = GetBulletSpeed(inst, index) ?? DefaultSlowSpeed;
-            var slowed = ClassDB.Instantiate("BulletSpeedData2D").AsGodotObject()
-                .Call("generate_random_data", 1, speed * factor, speed * factor, speed * factor, speed * factor, 0, 0);
-            inst.Call("set_bullet_speed_data", index, slowed);
-        }
     }
 
     /// Disables each nearby bullet and respawns it as a fan of SplitCount pellets around its

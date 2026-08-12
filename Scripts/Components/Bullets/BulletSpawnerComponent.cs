@@ -8,7 +8,7 @@ using SpacetimeDB.Types;
 /// BulletPatternEvent rows to the per-pattern spawn methods, and fires player bullets
 /// for CombatComponent. Enemy bullets spawn via spawn_controllable_directional_bullets and
 /// the returned DirectionalBullets2D instances are tracked in LiveEnemyBullets so
-/// BulletAbilityComponent can find and manipulate live bullets (the factory cannot enumerate
+/// BulletControllerComponent can find and manipulate live bullets (the factory cannot enumerate
 /// them). The deterministic SplitMix64 jitter mirrors the server's hash technique in
 /// enemy/methods.rs, seeded by event_id so every client (and the future audit script)
 /// derives identical pellet trajectories (logic moved out of BulletManager.cs).
@@ -21,7 +21,7 @@ public partial class BulletSpawnerComponent : Component
 
     // Live DirectionalBullets2D instances returned by spawn_controllable_directional_bullets.
     // The factory offers no way to enumerate active instances, so they are captured here for
-    // BulletAbilityComponent. A HashSet dedups instances that auto-pooling hands back out for
+    // BulletControllerComponent. A HashSet dedups instances that auto-pooling hands back out for
     // a later spawn; dead entries are pruned periodically and before each enemy spawn.
     private readonly System.Collections.Generic.HashSet<GodotObject> liveEnemyBullets = [];
     private float pruneTimer;
@@ -52,14 +52,16 @@ public partial class BulletSpawnerComponent : Component
     }
 
     // No per-bullet despawn signal exists, so liveness is checked defensively: an instance is
-    // dropped once it is freed or has no enabled bullets left.
+    // dropped once it is freed or has no enabled bullets left. The bulk get_all_bullets_status
+    // array is unreliable for multi-bullet instances (only index 0 reports true), so liveness
+    // goes through the per-index is_bullet_status_enabled.
     private void PruneLiveEnemyBullets() =>
         liveEnemyBullets.RemoveWhere(inst =>
         {
             if (!GodotObject.IsInstanceValid(inst)) return true;
-            var statuses = inst.Call("get_all_bullets_status").AsGodotArray<bool>();
-            foreach (var enabled in statuses)
-                if (enabled) return false;
+            int count = inst.Call("get_amount_bullets").AsInt32();
+            for (int i = 0; i < count; i++)
+                if (inst.Call("is_bullet_status_enabled", i).AsBool()) return false;
             return true;
         });
 
@@ -261,7 +263,7 @@ public partial class BulletSpawnerComponent : Component
         }
     }
 
-    /// Fan of enemy bullets for BulletAbilityComponent's split effect. Keeps the source
+    /// Fan of enemy bullets for BulletControllerComponent's split effect. Keeps the source
     /// bullet's BulletData so split pellets still report the original SourceStep on hit, and
     /// whatever texture was last applied to the shared enemy spawner.
     public void SpawnEnemyBulletFan(Vector2 origin, float baseAngle, int count, float spread, float speed, float lifetime, BulletData? customData)

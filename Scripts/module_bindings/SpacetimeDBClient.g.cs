@@ -36,6 +36,7 @@ namespace SpacetimeDB.Types
             AddTable(BiomeRegion = new(conn));
             AddTable(BiomeRegionDef = new(conn));
             AddTable(BuildingTile = new(conn));
+            AddTable(BulletControlEvent = new(conn));
             AddTable(BulletPatternEvent = new(conn));
             AddTable(DecorGroundRule = new(conn));
             AddTable(Enchantment = new(conn));
@@ -586,6 +587,7 @@ namespace SpacetimeDB.Types
             new QueryBuilder().From.BiomeRegion().ToSql(),
             new QueryBuilder().From.BiomeRegionDef().ToSql(),
             new QueryBuilder().From.BuildingTile().ToSql(),
+            new QueryBuilder().From.BulletControlEvent().ToSql(),
             new QueryBuilder().From.BulletPatternEvent().ToSql(),
             new QueryBuilder().From.DecorGroundRule().ToSql(),
             new QueryBuilder().From.Enchantment().ToSql(),
@@ -646,6 +648,7 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Table<BiomeRegion, BiomeRegionCols, BiomeRegionIxCols> BiomeRegion() => new("biome_region", new BiomeRegionCols("biome_region"), new BiomeRegionIxCols("biome_region"));
         public global::SpacetimeDB.Table<BiomeRegionDef, BiomeRegionDefCols, BiomeRegionDefIxCols> BiomeRegionDef() => new("biome_region_def", new BiomeRegionDefCols("biome_region_def"), new BiomeRegionDefIxCols("biome_region_def"));
         public global::SpacetimeDB.Table<BuildingTile, BuildingTileCols, BuildingTileIxCols> BuildingTile() => new("building_tile", new BuildingTileCols("building_tile"), new BuildingTileIxCols("building_tile"));
+        public global::SpacetimeDB.Table<BulletControlEvent, BulletControlEventCols, BulletControlEventIxCols> BulletControlEvent() => new("bullet_control_event", new BulletControlEventCols("bullet_control_event"), new BulletControlEventIxCols("bullet_control_event"));
         public global::SpacetimeDB.Table<BulletPatternEvent, BulletPatternEventCols, BulletPatternEventIxCols> BulletPatternEvent() => new("bullet_pattern_event", new BulletPatternEventCols("bullet_pattern_event"), new BulletPatternEventIxCols("bullet_pattern_event"));
         public global::SpacetimeDB.Table<DecorGroundRule, DecorGroundRuleCols, DecorGroundRuleIxCols> DecorGroundRule() => new("decor_ground_rule", new DecorGroundRuleCols("decor_ground_rule"), new DecorGroundRuleIxCols("decor_ground_rule"));
         public global::SpacetimeDB.Table<Enchantment, EnchantmentCols, EnchantmentIxCols> Enchantment() => new("enchantment", new EnchantmentCols("enchantment"), new EnchantmentIxCols("enchantment"));
@@ -777,10 +780,12 @@ namespace SpacetimeDB.Types
                 Reducer.ChangeStats args => Reducers.InvokeChangeStats(eventContext, args),
                 Reducer.ClaimAdmin args => Reducers.InvokeClaimAdmin(eventContext, args),
                 Reducer.ClearChunks args => Reducers.InvokeClearChunks(eventContext, args),
+                Reducer.ControlBullets args => Reducers.InvokeControlBullets(eventContext, args),
                 Reducer.CreateProfile args => Reducers.InvokeCreateProfile(eventContext, args),
                 Reducer.DeleteProfile args => Reducers.InvokeDeleteProfile(eventContext, args),
                 Reducer.DespawnEnemy args => Reducers.InvokeDespawnEnemy(eventContext, args),
                 Reducer.DropItem args => Reducers.InvokeDropItem(eventContext, args),
+                Reducer.FlagPlayerHit args => Reducers.InvokeFlagPlayerHit(eventContext, args),
                 Reducer.GenerateWorldManual args => Reducers.InvokeGenerateWorldManual(eventContext, args),
                 Reducer.GenerateWorldProc args => Reducers.InvokeGenerateWorldProc(eventContext, args),
                 Reducer.GiveItem args => Reducers.InvokeGiveItem(eventContext, args),
