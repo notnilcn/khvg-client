@@ -10,6 +10,7 @@ namespace SpacetimeDB.Types
     [SpacetimeDB.Type]
     public partial record ItemBehavior : SpacetimeDB.TaggedEnum<(
         WeaponBehavior Weapon,
-        ConsumableBehavior Consumable
+        ConsumableBehavior Consumable,
+        AbilityBehavior Ability
     )>;
 }

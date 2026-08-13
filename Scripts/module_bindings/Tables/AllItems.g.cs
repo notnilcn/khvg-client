@@ -44,9 +44,12 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<Item, string> Description { get; }
         public global::SpacetimeDB.Col<Item, string> TextureId { get; }
         public global::SpacetimeDB.Col<Item, EquipSlot> EquipSlot { get; }
+        public global::SpacetimeDB.Col<Item, uint> SlotCost { get; }
         public global::SpacetimeDB.Col<Item, System.Collections.Generic.List<StatModifier>> StatModifiers { get; }
         public global::SpacetimeDB.Col<Item, System.Collections.Generic.List<ItemBehavior>> Behaviors { get; }
         public global::SpacetimeDB.Col<Item, uint> MaxEnchantments { get; }
+        public global::SpacetimeDB.Col<Item, System.Collections.Generic.List<string>> InnateEnchantmentIds { get; }
+        public global::SpacetimeDB.Col<Item, StatRequirements> StatRequirements { get; }
 
         public AllItemsCols(string tableName)
         {
@@ -55,9 +58,12 @@ namespace SpacetimeDB.Types
             Description = new global::SpacetimeDB.Col<Item, string>(tableName, "description");
             TextureId = new global::SpacetimeDB.Col<Item, string>(tableName, "texture_id");
             EquipSlot = new global::SpacetimeDB.Col<Item, EquipSlot>(tableName, "equip_slot");
+            SlotCost = new global::SpacetimeDB.Col<Item, uint>(tableName, "slot_cost");
             StatModifiers = new global::SpacetimeDB.Col<Item, System.Collections.Generic.List<StatModifier>>(tableName, "stat_modifiers");
             Behaviors = new global::SpacetimeDB.Col<Item, System.Collections.Generic.List<ItemBehavior>>(tableName, "behaviors");
             MaxEnchantments = new global::SpacetimeDB.Col<Item, uint>(tableName, "max_enchantments");
+            InnateEnchantmentIds = new global::SpacetimeDB.Col<Item, System.Collections.Generic.List<string>>(tableName, "innate_enchantment_ids");
+            StatRequirements = new global::SpacetimeDB.Col<Item, StatRequirements>(tableName, "stat_requirements");
         }
     }
 

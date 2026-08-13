@@ -57,6 +57,7 @@ namespace SpacetimeDB.Types
             AddTable(LocalPlayerInventory = new(conn));
             AddTable(LocalPlayerPosition = new(conn));
             AddTable(LocalPlayerProfiles = new(conn));
+            AddTable(LocalPlayerStatAllocation = new(conn));
             AddTable(LocalPlayerStats = new(conn));
             AddTable(LoggedInPlayer = new(conn));
             AddTable(LootDrop = new(conn));
@@ -72,9 +73,10 @@ namespace SpacetimeDB.Types
             AddTable(OverlayAdjacencyRule = new(conn));
             AddTable(PlayerChunk = new(conn));
             AddTable(PlayerData = new(conn));
-            AddTable(PlayerInventory = new(conn));
+            AddTable(PlayerInventorySlot = new(conn));
             AddTable(PlayerPosition = new(conn));
             AddTable(PlayerProfile = new(conn));
+            AddTable(PlayerStatAllocation = new(conn));
             AddTable(PlayerStats = new(conn));
             AddTable(RepeatStepDef = new(conn));
             AddTable(RepeatStepInstance = new(conn));
@@ -608,6 +610,7 @@ namespace SpacetimeDB.Types
             new QueryBuilder().From.LocalPlayerInventory().ToSql(),
             new QueryBuilder().From.LocalPlayerPosition().ToSql(),
             new QueryBuilder().From.LocalPlayerProfiles().ToSql(),
+            new QueryBuilder().From.LocalPlayerStatAllocation().ToSql(),
             new QueryBuilder().From.LocalPlayerStats().ToSql(),
             new QueryBuilder().From.LoggedInPlayer().ToSql(),
             new QueryBuilder().From.LootDrop().ToSql(),
@@ -623,9 +626,10 @@ namespace SpacetimeDB.Types
             new QueryBuilder().From.OverlayAdjacencyRule().ToSql(),
             new QueryBuilder().From.PlayerChunk().ToSql(),
             new QueryBuilder().From.PlayerData().ToSql(),
-            new QueryBuilder().From.PlayerInventory().ToSql(),
+            new QueryBuilder().From.PlayerInventorySlot().ToSql(),
             new QueryBuilder().From.PlayerPosition().ToSql(),
             new QueryBuilder().From.PlayerProfile().ToSql(),
+            new QueryBuilder().From.PlayerStatAllocation().ToSql(),
             new QueryBuilder().From.PlayerStats().ToSql(),
             new QueryBuilder().From.RepeatStepDef().ToSql(),
             new QueryBuilder().From.RepeatStepInstance().ToSql(),
@@ -666,9 +670,10 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Table<LoggedInPlayer, LocalPlayerCols, LocalPlayerIxCols> LocalPlayer() => new("local_player", new LocalPlayerCols("local_player"), new LocalPlayerIxCols("local_player"));
         public global::SpacetimeDB.Table<PlayerProfile, LocalPlayerActiveProfileCols, LocalPlayerActiveProfileIxCols> LocalPlayerActiveProfile() => new("local_player_active_profile", new LocalPlayerActiveProfileCols("local_player_active_profile"), new LocalPlayerActiveProfileIxCols("local_player_active_profile"));
         public global::SpacetimeDB.Table<PlayerData, LocalPlayerDataCols, LocalPlayerDataIxCols> LocalPlayerData() => new("local_player_data", new LocalPlayerDataCols("local_player_data"), new LocalPlayerDataIxCols("local_player_data"));
-        public global::SpacetimeDB.Table<PlayerInventory, LocalPlayerInventoryCols, LocalPlayerInventoryIxCols> LocalPlayerInventory() => new("local_player_inventory", new LocalPlayerInventoryCols("local_player_inventory"), new LocalPlayerInventoryIxCols("local_player_inventory"));
+        public global::SpacetimeDB.Table<PlayerInventorySlot, LocalPlayerInventoryCols, LocalPlayerInventoryIxCols> LocalPlayerInventory() => new("local_player_inventory", new LocalPlayerInventoryCols("local_player_inventory"), new LocalPlayerInventoryIxCols("local_player_inventory"));
         public global::SpacetimeDB.Table<PlayerPosition, LocalPlayerPositionCols, LocalPlayerPositionIxCols> LocalPlayerPosition() => new("local_player_position", new LocalPlayerPositionCols("local_player_position"), new LocalPlayerPositionIxCols("local_player_position"));
         public global::SpacetimeDB.Table<PlayerProfile, LocalPlayerProfilesCols, LocalPlayerProfilesIxCols> LocalPlayerProfiles() => new("local_player_profiles", new LocalPlayerProfilesCols("local_player_profiles"), new LocalPlayerProfilesIxCols("local_player_profiles"));
+        public global::SpacetimeDB.Table<PlayerStatAllocation, LocalPlayerStatAllocationCols, LocalPlayerStatAllocationIxCols> LocalPlayerStatAllocation() => new("local_player_stat_allocation", new LocalPlayerStatAllocationCols("local_player_stat_allocation"), new LocalPlayerStatAllocationIxCols("local_player_stat_allocation"));
         public global::SpacetimeDB.Table<PlayerStats, LocalPlayerStatsCols, LocalPlayerStatsIxCols> LocalPlayerStats() => new("local_player_stats", new LocalPlayerStatsCols("local_player_stats"), new LocalPlayerStatsIxCols("local_player_stats"));
         public global::SpacetimeDB.Table<LoggedInPlayer, LoggedInPlayerCols, LoggedInPlayerIxCols> LoggedInPlayer() => new("logged_in_player", new LoggedInPlayerCols("logged_in_player"), new LoggedInPlayerIxCols("logged_in_player"));
         public global::SpacetimeDB.Table<LootDrop, LootDropCols, LootDropIxCols> LootDrop() => new("loot_drop", new LootDropCols("loot_drop"), new LootDropIxCols("loot_drop"));
@@ -684,9 +689,10 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Table<OverlayAdjacencyRule, OverlayAdjacencyRuleCols, OverlayAdjacencyRuleIxCols> OverlayAdjacencyRule() => new("overlay_adjacency_rule", new OverlayAdjacencyRuleCols("overlay_adjacency_rule"), new OverlayAdjacencyRuleIxCols("overlay_adjacency_rule"));
         public global::SpacetimeDB.Table<PlayerChunk, PlayerChunkCols, PlayerChunkIxCols> PlayerChunk() => new("player_chunk", new PlayerChunkCols("player_chunk"), new PlayerChunkIxCols("player_chunk"));
         public global::SpacetimeDB.Table<PlayerData, PlayerDataCols, PlayerDataIxCols> PlayerData() => new("player_data", new PlayerDataCols("player_data"), new PlayerDataIxCols("player_data"));
-        public global::SpacetimeDB.Table<PlayerInventory, PlayerInventoryCols, PlayerInventoryIxCols> PlayerInventory() => new("player_inventory", new PlayerInventoryCols("player_inventory"), new PlayerInventoryIxCols("player_inventory"));
+        public global::SpacetimeDB.Table<PlayerInventorySlot, PlayerInventorySlotCols, PlayerInventorySlotIxCols> PlayerInventorySlot() => new("player_inventory_slot", new PlayerInventorySlotCols("player_inventory_slot"), new PlayerInventorySlotIxCols("player_inventory_slot"));
         public global::SpacetimeDB.Table<PlayerPosition, PlayerPositionCols, PlayerPositionIxCols> PlayerPosition() => new("player_position", new PlayerPositionCols("player_position"), new PlayerPositionIxCols("player_position"));
         public global::SpacetimeDB.Table<PlayerProfile, PlayerProfileCols, PlayerProfileIxCols> PlayerProfile() => new("player_profile", new PlayerProfileCols("player_profile"), new PlayerProfileIxCols("player_profile"));
+        public global::SpacetimeDB.Table<PlayerStatAllocation, PlayerStatAllocationCols, PlayerStatAllocationIxCols> PlayerStatAllocation() => new("player_stat_allocation", new PlayerStatAllocationCols("player_stat_allocation"), new PlayerStatAllocationIxCols("player_stat_allocation"));
         public global::SpacetimeDB.Table<PlayerStats, PlayerStatsCols, PlayerStatsIxCols> PlayerStats() => new("player_stats", new PlayerStatsCols("player_stats"), new PlayerStatsIxCols("player_stats"));
         public global::SpacetimeDB.Table<RepeatStepDef, RepeatStepDefCols, RepeatStepDefIxCols> RepeatStepDef() => new("repeat_step_def", new RepeatStepDefCols("repeat_step_def"), new RepeatStepDefIxCols("repeat_step_def"));
         public global::SpacetimeDB.Table<RepeatStepInstance, RepeatStepInstanceCols, RepeatStepInstanceIxCols> RepeatStepInstance() => new("repeat_step_instance", new RepeatStepInstanceCols("repeat_step_instance"), new RepeatStepInstanceIxCols("repeat_step_instance"));
@@ -775,7 +781,9 @@ namespace SpacetimeDB.Types
             var eventContext = (ReducerEventContext)context;
             return reducer switch
             {
+                Reducer.ActivateAbility args => Reducers.InvokeActivateAbility(eventContext, args),
                 Reducer.AddChunks args => Reducers.InvokeAddChunks(eventContext, args),
+                Reducer.AllocateStat args => Reducers.InvokeAllocateStat(eventContext, args),
                 Reducer.ApplyEnchantment args => Reducers.InvokeApplyEnchantment(eventContext, args),
                 Reducer.ChangeStats args => Reducers.InvokeChangeStats(eventContext, args),
                 Reducer.ClaimAdmin args => Reducers.InvokeClaimAdmin(eventContext, args),
@@ -800,6 +808,7 @@ namespace SpacetimeDB.Types
                 Reducer.ReportEnemyHit args => Reducers.InvokeReportEnemyHit(eventContext, args),
                 Reducer.ReportHit args => Reducers.InvokeReportHit(eventContext, args),
                 Reducer.ReportMovement args => Reducers.InvokeReportMovement(eventContext, args),
+                Reducer.SetSlotToggle args => Reducers.InvokeSetSlotToggle(eventContext, args),
                 Reducer.SetUsername args => Reducers.InvokeSetUsername(eventContext, args),
                 Reducer.SpawnEnemy args => Reducers.InvokeSpawnEnemy(eventContext, args),
                 Reducer.SwapSlots args => Reducers.InvokeSwapSlots(eventContext, args),

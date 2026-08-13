@@ -21,30 +21,30 @@ namespace SpacetimeDB.Types
         public int Wisdom;
         [DataMember(Name = "dexterity")]
         public int Dexterity;
-        [DataMember(Name = "defense")]
-        public int Defense;
-        [DataMember(Name = "vitality")]
-        public int Vitality;
-        [DataMember(Name = "speed")]
-        public int Speed;
+        [DataMember(Name = "damage_dealer")]
+        public int DamageDealer;
+        [DataMember(Name = "supporter")]
+        public int Supporter;
+        [DataMember(Name = "artisan")]
+        public int Artisan;
 
         public PlayerStats(
             ulong ProfileId,
             int Strength,
             int Wisdom,
             int Dexterity,
-            int Defense,
-            int Vitality,
-            int Speed
+            int DamageDealer,
+            int Supporter,
+            int Artisan
         )
         {
             this.ProfileId = ProfileId;
             this.Strength = Strength;
             this.Wisdom = Wisdom;
             this.Dexterity = Dexterity;
-            this.Defense = Defense;
-            this.Vitality = Vitality;
-            this.Speed = Speed;
+            this.DamageDealer = DamageDealer;
+            this.Supporter = Supporter;
+            this.Artisan = Artisan;
         }
 
         public PlayerStats()

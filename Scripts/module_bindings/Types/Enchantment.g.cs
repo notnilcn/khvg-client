@@ -23,6 +23,8 @@ namespace SpacetimeDB.Types
         public string TextureId;
         [DataMember(Name = "stat_modifiers")]
         public System.Collections.Generic.List<StatModifier> StatModifiers;
+        [DataMember(Name = "behaviors")]
+        public System.Collections.Generic.List<EnchantmentBehavior> Behaviors;
         [DataMember(Name = "allowed_slots")]
         public System.Collections.Generic.List<EquipSlot> AllowedSlots;
 
@@ -32,6 +34,7 @@ namespace SpacetimeDB.Types
             string Description,
             string TextureId,
             System.Collections.Generic.List<StatModifier> StatModifiers,
+            System.Collections.Generic.List<EnchantmentBehavior> Behaviors,
             System.Collections.Generic.List<EquipSlot> AllowedSlots
         )
         {
@@ -40,6 +43,7 @@ namespace SpacetimeDB.Types
             this.Description = Description;
             this.TextureId = TextureId;
             this.StatModifiers = StatModifiers;
+            this.Behaviors = Behaviors;
             this.AllowedSlots = AllowedSlots;
         }
 
@@ -50,6 +54,7 @@ namespace SpacetimeDB.Types
             this.Description = "";
             this.TextureId = "";
             this.StatModifiers = new();
+            this.Behaviors = new();
             this.AllowedSlots = new();
         }
     }

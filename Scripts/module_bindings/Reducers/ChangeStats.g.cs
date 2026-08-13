@@ -12,12 +12,12 @@ namespace SpacetimeDB.Types
 {
     public sealed partial class RemoteReducers : RemoteBase
     {
-        public delegate void ChangeStatsHandler(ReducerEventContext ctx, string targetUsername, string profileName, int strength, int wisdom, int dexterity, int defense, int vitality, int speed);
+        public delegate void ChangeStatsHandler(ReducerEventContext ctx, string targetUsername, string profileName, int strength, int wisdom, int dexterity, int damageDealer, int supporter, int artisan);
         public event ChangeStatsHandler? OnChangeStats;
 
-        public void ChangeStats(string targetUsername, string profileName, int strength, int wisdom, int dexterity, int defense, int vitality, int speed)
+        public void ChangeStats(string targetUsername, string profileName, int strength, int wisdom, int dexterity, int damageDealer, int supporter, int artisan)
         {
-            conn.InternalCallReducer(new Reducer.ChangeStats(targetUsername, profileName, strength, wisdom, dexterity, defense, vitality, speed));
+            conn.InternalCallReducer(new Reducer.ChangeStats(targetUsername, profileName, strength, wisdom, dexterity, damageDealer, supporter, artisan));
         }
 
         public bool InvokeChangeStats(ReducerEventContext ctx, Reducer.ChangeStats args)
@@ -41,9 +41,9 @@ namespace SpacetimeDB.Types
                 args.Strength,
                 args.Wisdom,
                 args.Dexterity,
-                args.Defense,
-                args.Vitality,
-                args.Speed
+                args.DamageDealer,
+                args.Supporter,
+                args.Artisan
             );
             return true;
         }
@@ -65,12 +65,12 @@ namespace SpacetimeDB.Types
             public int Wisdom;
             [DataMember(Name = "dexterity")]
             public int Dexterity;
-            [DataMember(Name = "defense")]
-            public int Defense;
-            [DataMember(Name = "vitality")]
-            public int Vitality;
-            [DataMember(Name = "speed")]
-            public int Speed;
+            [DataMember(Name = "damage_dealer")]
+            public int DamageDealer;
+            [DataMember(Name = "supporter")]
+            public int Supporter;
+            [DataMember(Name = "artisan")]
+            public int Artisan;
 
             public ChangeStats(
                 string TargetUsername,
@@ -78,9 +78,9 @@ namespace SpacetimeDB.Types
                 int Strength,
                 int Wisdom,
                 int Dexterity,
-                int Defense,
-                int Vitality,
-                int Speed
+                int DamageDealer,
+                int Supporter,
+                int Artisan
             )
             {
                 this.TargetUsername = TargetUsername;
@@ -88,9 +88,9 @@ namespace SpacetimeDB.Types
                 this.Strength = Strength;
                 this.Wisdom = Wisdom;
                 this.Dexterity = Dexterity;
-                this.Defense = Defense;
-                this.Vitality = Vitality;
-                this.Speed = Speed;
+                this.DamageDealer = DamageDealer;
+                this.Supporter = Supporter;
+                this.Artisan = Artisan;
             }
 
             public ChangeStats()

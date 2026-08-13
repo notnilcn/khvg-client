@@ -23,12 +23,18 @@ namespace SpacetimeDB.Types
         public string TextureId;
         [DataMember(Name = "equip_slot")]
         public EquipSlot EquipSlot;
+        [DataMember(Name = "slot_cost")]
+        public uint SlotCost;
         [DataMember(Name = "stat_modifiers")]
         public System.Collections.Generic.List<StatModifier> StatModifiers;
         [DataMember(Name = "behaviors")]
         public System.Collections.Generic.List<ItemBehavior> Behaviors;
         [DataMember(Name = "max_enchantments")]
         public uint MaxEnchantments;
+        [DataMember(Name = "innate_enchantment_ids")]
+        public System.Collections.Generic.List<string> InnateEnchantmentIds;
+        [DataMember(Name = "stat_requirements")]
+        public StatRequirements StatRequirements;
 
         public Item(
             string ItemId,
@@ -36,9 +42,12 @@ namespace SpacetimeDB.Types
             string Description,
             string TextureId,
             EquipSlot EquipSlot,
+            uint SlotCost,
             System.Collections.Generic.List<StatModifier> StatModifiers,
             System.Collections.Generic.List<ItemBehavior> Behaviors,
-            uint MaxEnchantments
+            uint MaxEnchantments,
+            System.Collections.Generic.List<string> InnateEnchantmentIds,
+            StatRequirements StatRequirements
         )
         {
             this.ItemId = ItemId;
@@ -46,9 +55,12 @@ namespace SpacetimeDB.Types
             this.Description = Description;
             this.TextureId = TextureId;
             this.EquipSlot = EquipSlot;
+            this.SlotCost = SlotCost;
             this.StatModifiers = StatModifiers;
             this.Behaviors = Behaviors;
             this.MaxEnchantments = MaxEnchantments;
+            this.InnateEnchantmentIds = InnateEnchantmentIds;
+            this.StatRequirements = StatRequirements;
         }
 
         public Item()
@@ -59,6 +71,8 @@ namespace SpacetimeDB.Types
             this.TextureId = "";
             this.StatModifiers = new();
             this.Behaviors = new();
+            this.InnateEnchantmentIds = new();
+            this.StatRequirements = new();
         }
     }
 }

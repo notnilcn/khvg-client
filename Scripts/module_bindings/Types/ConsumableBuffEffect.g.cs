@@ -12,8 +12,8 @@ namespace SpacetimeDB.Types
         float Strength,
         float Wisdom,
         float Dexterity,
-        float Defense,
-        float Vitality,
-        float Speed
+        float DamageDealer,
+        float Supporter,
+        float Artisan
     )>;
 }

@@ -43,9 +43,9 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<PlayerStats, int> Strength { get; }
         public global::SpacetimeDB.Col<PlayerStats, int> Wisdom { get; }
         public global::SpacetimeDB.Col<PlayerStats, int> Dexterity { get; }
-        public global::SpacetimeDB.Col<PlayerStats, int> Defense { get; }
-        public global::SpacetimeDB.Col<PlayerStats, int> Vitality { get; }
-        public global::SpacetimeDB.Col<PlayerStats, int> Speed { get; }
+        public global::SpacetimeDB.Col<PlayerStats, int> DamageDealer { get; }
+        public global::SpacetimeDB.Col<PlayerStats, int> Supporter { get; }
+        public global::SpacetimeDB.Col<PlayerStats, int> Artisan { get; }
 
         public LocalPlayerStatsCols(string tableName)
         {
@@ -53,9 +53,9 @@ namespace SpacetimeDB.Types
             Strength = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "strength");
             Wisdom = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "wisdom");
             Dexterity = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "dexterity");
-            Defense = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "defense");
-            Vitality = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "vitality");
-            Speed = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "speed");
+            DamageDealer = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "damage_dealer");
+            Supporter = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "supporter");
+            Artisan = new global::SpacetimeDB.Col<PlayerStats, int>(tableName, "artisan");
         }
     }
 

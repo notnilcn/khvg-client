@@ -44,6 +44,7 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<Enchantment, string> Description { get; }
         public global::SpacetimeDB.Col<Enchantment, string> TextureId { get; }
         public global::SpacetimeDB.Col<Enchantment, System.Collections.Generic.List<StatModifier>> StatModifiers { get; }
+        public global::SpacetimeDB.Col<Enchantment, System.Collections.Generic.List<EnchantmentBehavior>> Behaviors { get; }
         public global::SpacetimeDB.Col<Enchantment, System.Collections.Generic.List<EquipSlot>> AllowedSlots { get; }
 
         public EnchantmentCols(string tableName)
@@ -53,6 +54,7 @@ namespace SpacetimeDB.Types
             Description = new global::SpacetimeDB.Col<Enchantment, string>(tableName, "description");
             TextureId = new global::SpacetimeDB.Col<Enchantment, string>(tableName, "texture_id");
             StatModifiers = new global::SpacetimeDB.Col<Enchantment, System.Collections.Generic.List<StatModifier>>(tableName, "stat_modifiers");
+            Behaviors = new global::SpacetimeDB.Col<Enchantment, System.Collections.Generic.List<EnchantmentBehavior>>(tableName, "behaviors");
             AllowedSlots = new global::SpacetimeDB.Col<Enchantment, System.Collections.Generic.List<EquipSlot>>(tableName, "allowed_slots");
         }
     }

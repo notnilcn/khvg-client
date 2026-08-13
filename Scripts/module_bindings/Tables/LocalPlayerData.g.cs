@@ -44,6 +44,7 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<PlayerData, uint> Xp { get; }
         public global::SpacetimeDB.Col<PlayerData, uint> Hp { get; }
         public global::SpacetimeDB.Col<PlayerData, uint> MaxHp { get; }
+        public global::SpacetimeDB.Col<PlayerData, int> Defense { get; }
 
         public LocalPlayerDataCols(string tableName)
         {
@@ -52,6 +53,7 @@ namespace SpacetimeDB.Types
             Xp = new global::SpacetimeDB.Col<PlayerData, uint>(tableName, "xp");
             Hp = new global::SpacetimeDB.Col<PlayerData, uint>(tableName, "hp");
             MaxHp = new global::SpacetimeDB.Col<PlayerData, uint>(tableName, "max_hp");
+            Defense = new global::SpacetimeDB.Col<PlayerData, int>(tableName, "defense");
         }
     }
 

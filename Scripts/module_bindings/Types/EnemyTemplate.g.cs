@@ -21,6 +21,8 @@ namespace SpacetimeDB.Types
         public string DisplayName;
         [DataMember(Name = "max_hp")]
         public uint MaxHp;
+        [DataMember(Name = "defense")]
+        public uint Defense;
         [DataMember(Name = "move_sim_factor")]
         public float MoveSimFactor;
         [DataMember(Name = "attack_sim_factor")]
@@ -35,6 +37,7 @@ namespace SpacetimeDB.Types
             string TextureId,
             string DisplayName,
             uint MaxHp,
+            uint Defense,
             float MoveSimFactor,
             float AttackSimFactor,
             float AggroLockSeconds,
@@ -45,6 +48,7 @@ namespace SpacetimeDB.Types
             this.TextureId = TextureId;
             this.DisplayName = DisplayName;
             this.MaxHp = MaxHp;
+            this.Defense = Defense;
             this.MoveSimFactor = MoveSimFactor;
             this.AttackSimFactor = AttackSimFactor;
             this.AggroLockSeconds = AggroLockSeconds;

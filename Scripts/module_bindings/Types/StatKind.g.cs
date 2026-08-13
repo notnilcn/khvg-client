@@ -13,9 +13,10 @@ namespace SpacetimeDB.Types
         Strength,
         Wisdom,
         Dexterity,
-        Defense,
-        Vitality,
-        Speed,
+        DamageDealer,
+        Supporter,
+        Artisan,
         Hp,
+        Defense,
     }
 }

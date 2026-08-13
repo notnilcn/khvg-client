@@ -13,25 +13,25 @@ namespace SpacetimeDB.Types
 {
     public sealed partial class RemoteTables
     {
-        public sealed class LocalPlayerInventoryHandle : RemoteTableHandle<EventContext, PlayerInventory>
+        public sealed class LocalPlayerInventoryHandle : RemoteTableHandle<EventContext, PlayerInventorySlot>
         {
             public override string RemoteTableName => "local_player_inventory";
 
-            public sealed class ProfileIdUniqueIndex : UniqueIndexBase<ulong>
+            public sealed class SlotIdUniqueIndex : UniqueIndexBase<ulong>
             {
-                protected override ulong GetKey(PlayerInventory row) => row.ProfileId;
+                protected override ulong GetKey(PlayerInventorySlot row) => row.SlotId;
 
-                public ProfileIdUniqueIndex(LocalPlayerInventoryHandle table) : base(table) { }
+                public SlotIdUniqueIndex(LocalPlayerInventoryHandle table) : base(table) { }
             }
 
-            public readonly ProfileIdUniqueIndex ProfileId;
+            public readonly SlotIdUniqueIndex SlotId;
 
             internal LocalPlayerInventoryHandle(DbConnection conn) : base(conn)
             {
-                ProfileId = new(this);
+                SlotId = new(this);
             }
 
-            protected override object GetPrimaryKey(PlayerInventory row) => row.ProfileId;
+            protected override object GetPrimaryKey(PlayerInventorySlot row) => row.SlotId;
         }
 
         public readonly LocalPlayerInventoryHandle LocalPlayerInventory;
@@ -39,23 +39,39 @@ namespace SpacetimeDB.Types
 
     public sealed class LocalPlayerInventoryCols
     {
-        public global::SpacetimeDB.Col<PlayerInventory, ulong> ProfileId { get; }
-        public global::SpacetimeDB.Col<PlayerInventory, System.Collections.Generic.List<InventorySlot>> Slots { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, ulong> SlotId { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, ulong> ProfileId { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, uint> SlotIndex { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, SlotRole> Role { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, string> ItemId { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, System.Collections.Generic.List<string>> EnchantmentIds { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, SpacetimeDB.Timestamp> CooldownUntil { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, uint> Charges { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, uint> ActiveToggle { get; }
+        public global::SpacetimeDB.Col<PlayerInventorySlot, uint> OccupiedBy { get; }
 
         public LocalPlayerInventoryCols(string tableName)
         {
-            ProfileId = new global::SpacetimeDB.Col<PlayerInventory, ulong>(tableName, "profile_id");
-            Slots = new global::SpacetimeDB.Col<PlayerInventory, System.Collections.Generic.List<InventorySlot>>(tableName, "slots");
+            SlotId = new global::SpacetimeDB.Col<PlayerInventorySlot, ulong>(tableName, "slot_id");
+            ProfileId = new global::SpacetimeDB.Col<PlayerInventorySlot, ulong>(tableName, "profile_id");
+            SlotIndex = new global::SpacetimeDB.Col<PlayerInventorySlot, uint>(tableName, "slot_index");
+            Role = new global::SpacetimeDB.Col<PlayerInventorySlot, SlotRole>(tableName, "role");
+            ItemId = new global::SpacetimeDB.Col<PlayerInventorySlot, string>(tableName, "item_id");
+            EnchantmentIds = new global::SpacetimeDB.Col<PlayerInventorySlot, System.Collections.Generic.List<string>>(tableName, "enchantment_ids");
+            CooldownUntil = new global::SpacetimeDB.Col<PlayerInventorySlot, SpacetimeDB.Timestamp>(tableName, "cooldown_until");
+            Charges = new global::SpacetimeDB.Col<PlayerInventorySlot, uint>(tableName, "charges");
+            ActiveToggle = new global::SpacetimeDB.Col<PlayerInventorySlot, uint>(tableName, "active_toggle");
+            OccupiedBy = new global::SpacetimeDB.Col<PlayerInventorySlot, uint>(tableName, "occupied_by");
         }
     }
 
     public sealed class LocalPlayerInventoryIxCols
     {
-        public global::SpacetimeDB.IxCol<PlayerInventory, ulong> ProfileId { get; }
+        public global::SpacetimeDB.IxCol<PlayerInventorySlot, ulong> SlotId { get; }
 
         public LocalPlayerInventoryIxCols(string tableName)
         {
-            ProfileId = new global::SpacetimeDB.IxCol<PlayerInventory, ulong>(tableName, "profile_id");
+            SlotId = new global::SpacetimeDB.IxCol<PlayerInventorySlot, ulong>(tableName, "slot_id");
         }
     }
 }

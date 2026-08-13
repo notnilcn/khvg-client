@@ -11,10 +11,10 @@ namespace SpacetimeDB.Types
     public enum EquipSlot
     {
         Weapon,
-        Artifact,
         Armor,
         Accessory,
         Bag,
         Consumable,
+        Ability,
     }
 }
