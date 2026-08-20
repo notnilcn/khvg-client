@@ -19,8 +19,8 @@ namespace SpacetimeDB.Types
         public float X;
         [DataMember(Name = "y")]
         public float Y;
-        [DataMember(Name = "rotation")]
-        public float Rotation;
+        [DataMember(Name = "screen_rotation")]
+        public float ScreenRotation;
         [DataMember(Name = "chunk_index")]
         public long ChunkIndex;
         [DataMember(Name = "hex_q")]
@@ -32,7 +32,7 @@ namespace SpacetimeDB.Types
             SpacetimeDB.Identity PlayerId,
             float X,
             float Y,
-            float Rotation,
+            float ScreenRotation,
             long ChunkIndex,
             int HexQ,
             int HexR
@@ -41,7 +41,7 @@ namespace SpacetimeDB.Types
             this.PlayerId = PlayerId;
             this.X = X;
             this.Y = Y;
-            this.Rotation = Rotation;
+            this.ScreenRotation = ScreenRotation;
             this.ChunkIndex = ChunkIndex;
             this.HexQ = HexQ;
             this.HexR = HexR;

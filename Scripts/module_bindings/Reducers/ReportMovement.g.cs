@@ -12,12 +12,12 @@ namespace SpacetimeDB.Types
 {
     public sealed partial class RemoteReducers : RemoteBase
     {
-        public delegate void ReportMovementHandler(ReducerEventContext ctx, float x, float y, float rotation);
+        public delegate void ReportMovementHandler(ReducerEventContext ctx, float x, float y, float movementDirection, float movementSpeed);
         public event ReportMovementHandler? OnReportMovement;
 
-        public void ReportMovement(float x, float y, float rotation)
+        public void ReportMovement(float x, float y, float movementDirection, float movementSpeed)
         {
-            conn.InternalCallReducer(new Reducer.ReportMovement(x, y, rotation));
+            conn.InternalCallReducer(new Reducer.ReportMovement(x, y, movementDirection, movementSpeed));
         }
 
         public bool InvokeReportMovement(ReducerEventContext ctx, Reducer.ReportMovement args)
@@ -38,7 +38,8 @@ namespace SpacetimeDB.Types
                 ctx,
                 args.X,
                 args.Y,
-                args.Rotation
+                args.MovementDirection,
+                args.MovementSpeed
             );
             return true;
         }
@@ -54,18 +55,22 @@ namespace SpacetimeDB.Types
             public float X;
             [DataMember(Name = "y")]
             public float Y;
-            [DataMember(Name = "rotation")]
-            public float Rotation;
+            [DataMember(Name = "movement_direction")]
+            public float MovementDirection;
+            [DataMember(Name = "movement_speed")]
+            public float MovementSpeed;
 
             public ReportMovement(
                 float X,
                 float Y,
-                float Rotation
+                float MovementDirection,
+                float MovementSpeed
             )
             {
                 this.X = X;
                 this.Y = Y;
-                this.Rotation = Rotation;
+                this.MovementDirection = MovementDirection;
+                this.MovementSpeed = MovementSpeed;
             }
 
             public ReportMovement()

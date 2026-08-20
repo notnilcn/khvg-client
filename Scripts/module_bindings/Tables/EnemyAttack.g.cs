@@ -56,6 +56,7 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<EnemyAttack, SpacetimeDB.Timestamp> StepTimer { get; }
         public global::SpacetimeDB.Col<EnemyAttack, bool> StepWaiting { get; }
         public global::SpacetimeDB.Col<EnemyAttack, bool> StartDelaying { get; }
+        public global::SpacetimeDB.Col<EnemyAttack, bool> LoopWaiting { get; }
 
         public EnemyAttackCols(string tableName)
         {
@@ -66,6 +67,7 @@ namespace SpacetimeDB.Types
             StepTimer = new global::SpacetimeDB.Col<EnemyAttack, SpacetimeDB.Timestamp>(tableName, "step_timer");
             StepWaiting = new global::SpacetimeDB.Col<EnemyAttack, bool>(tableName, "step_waiting");
             StartDelaying = new global::SpacetimeDB.Col<EnemyAttack, bool>(tableName, "start_delaying");
+            LoopWaiting = new global::SpacetimeDB.Col<EnemyAttack, bool>(tableName, "loop_waiting");
         }
     }
 

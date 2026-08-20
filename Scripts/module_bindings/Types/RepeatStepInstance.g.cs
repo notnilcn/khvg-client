@@ -31,10 +31,16 @@ namespace SpacetimeDB.Types
         public float Lifetime;
         [DataMember(Name = "damage")]
         public uint Damage;
+        [DataMember(Name = "angular_speed")]
+        public float AngularSpeed;
+        [DataMember(Name = "speed_acceleration")]
+        public float SpeedAcceleration;
         [DataMember(Name = "repeat_interval")]
         public float RepeatInterval;
         [DataMember(Name = "repeat_target")]
         public uint RepeatTarget;
+        [DataMember(Name = "angle_step")]
+        public float AngleStep;
         [DataMember(Name = "next_step_delay")]
         public float NextStepDelay;
         [DataMember(Name = "repeat_count")]
@@ -50,8 +56,11 @@ namespace SpacetimeDB.Types
             string TextureId,
             float Lifetime,
             uint Damage,
+            float AngularSpeed,
+            float SpeedAcceleration,
             float RepeatInterval,
             uint RepeatTarget,
+            float AngleStep,
             float NextStepDelay,
             uint RepeatCount
         )
@@ -65,8 +74,11 @@ namespace SpacetimeDB.Types
             this.TextureId = TextureId;
             this.Lifetime = Lifetime;
             this.Damage = Damage;
+            this.AngularSpeed = AngularSpeed;
+            this.SpeedAcceleration = SpeedAcceleration;
             this.RepeatInterval = RepeatInterval;
             this.RepeatTarget = RepeatTarget;
+            this.AngleStep = AngleStep;
             this.NextStepDelay = NextStepDelay;
             this.RepeatCount = RepeatCount;
         }

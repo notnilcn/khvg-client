@@ -31,6 +31,10 @@ namespace SpacetimeDB.Types
         public float Lifetime;
         [DataMember(Name = "damage")]
         public uint Damage;
+        [DataMember(Name = "angular_speed")]
+        public float AngularSpeed;
+        [DataMember(Name = "speed_acceleration")]
+        public float SpeedAcceleration;
         [DataMember(Name = "next_step_delay")]
         public float NextStepDelay;
 
@@ -44,6 +48,8 @@ namespace SpacetimeDB.Types
             string TextureId,
             float Lifetime,
             uint Damage,
+            float AngularSpeed,
+            float SpeedAcceleration,
             float NextStepDelay
         )
         {
@@ -56,6 +62,8 @@ namespace SpacetimeDB.Types
             this.TextureId = TextureId;
             this.Lifetime = Lifetime;
             this.Damage = Damage;
+            this.AngularSpeed = AngularSpeed;
+            this.SpeedAcceleration = SpeedAcceleration;
             this.NextStepDelay = NextStepDelay;
         }
 

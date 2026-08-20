@@ -14,11 +14,11 @@ using System.Linq;
 /// enchantable items in equipment slots — applicable enchantments with Socket/Remove
 /// buttons calling the ApplyEnchantment/RemoveEnchantment reducers. One
 /// enchantment_row.tscn instance per enchantment (data-driven count). Reached by the
-/// sibling SlotComponents through GetSibling — no singleton. Refreshes on
+/// SlotComponents through the scene-unique %ItemSidebar lookup — no singleton. Refreshes on
 /// InventoryChanged and GameManager.EnchantmentsChanged; stays open while the mouse is
 /// over it so buttons are clickable.
 /// </summary>
-public partial class ItemSidebarComponent : ControlComponent
+public partial class ItemSidebar : Control
 {
     [Export] public Label ItemNameLabel { get; set; } = null!;
     [Export] public TextureRect ItemIcon { get; set; } = null!;
@@ -31,10 +31,10 @@ public partial class ItemSidebarComponent : ControlComponent
     private int shownSlot = -1;
     private LocalPlayer? player;
 
-    protected override void OnRegistered()
+    public override void _Ready()
     {
         MouseExited += QueueHoverClear;
-        player = Entity as LocalPlayer;
+        player = this.GetAncestor<LocalPlayer>();
         if (player != null)
             player.InventoryChanged += RefreshShownSlot;
         GameManager.EnchantmentsChanged += RefreshShownSlot;
@@ -76,7 +76,7 @@ public partial class ItemSidebarComponent : ControlComponent
 
     private void Render()
     {
-        var local = LocalPlayer.Local;
+        var local = player;
         if (local == null || shownSlot < 0)
         {
             Clear();
@@ -116,9 +116,9 @@ public partial class ItemSidebarComponent : ControlComponent
         var ownWeapons = new List<WeaponBehavior>();
         foreach (var behavior in item.Behaviors)
             if (behavior is ItemBehavior.Weapon(var weapon)) ownWeapons.Add(weapon);
-        if (shownSlot == 0 && LocalPlayer.Local != null)
+        if (shownSlot == 0 && player != null)
         {
-            var options = EffectiveWeaponResolver.ToggleOptions(LocalPlayer.Local);
+            var options = EffectiveWeaponResolver.ToggleOptions(player);
             uint active = resolved.Slot?.ActiveToggle ?? 0;
             for (int i = 0; i < options.Count; i++)
                 DetailsList.AddChild(MakeLabel($"{(i == (int)active ? "▶ " : "  ")}{FormatWeaponOption(options[i])}"));
@@ -197,7 +197,7 @@ public partial class ItemSidebarComponent : ControlComponent
         if (parts.Count == 0) return;
 
         var label = MakeLabel("Requires " + string.Join(", ", parts));
-        var local = LocalPlayer.Local;
+        var local = player;
         bool unmet = local != null && (
             local.Strength < req.Strength || local.Wisdom < req.Wisdom || local.Dexterity < req.Dexterity ||
             local.DamageDealer < req.DamageDealer || local.Supporter < req.Supporter || local.Artisan < req.Artisan);
@@ -291,8 +291,11 @@ public partial class ItemSidebarComponent : ControlComponent
             AbilityEffect.Heal => $"Heals {ability.Potency:0.#} HP",
             AbilityEffect.Buff(var buff) => $"{FormatBuff(buff)} for {ability.Duration:0.#}s",
             AbilityEffect.DeleteBullets(var radius) => $"Erases enemy bullets within {radius:0} of the cursor",
-            AbilityEffect.SplitBullets(var radius) => $"Splits enemy bullets within {radius:0} of the cursor",
-            AbilityEffect.AttractBullets(var radius) => $"Drags enemy bullets within {radius:0} toward the cursor",
+            AbilityEffect.SplitBullets(var p) => $"Splits enemy bullets in two in a {p.Length:0}×{p.Width:0} rectangle in front of you",
+            AbilityEffect.AttractBullets(var radius) => ability.Duration > 0
+                ? $"Summons a black hole at the cursor for {ability.Duration:0.#}s, dragging in enemy bullets within {radius:0}"
+                : $"Drags enemy bullets within {radius:0} toward the cursor",
+            AbilityEffect.DeleteBulletsInRect(var p) => $"Deletes enemy bullets in a {p.Length:0}×{p.Width:0} rectangle in front of you",
             _ => "",
         };
         string charges = ability.MaxCharges > 0 ? $" | {ability.MaxCharges} charges" : "";
@@ -327,6 +330,5 @@ public partial class ItemSidebarComponent : ControlComponent
         if (player != null)
             player.InventoryChanged -= RefreshShownSlot;
         GameManager.EnchantmentsChanged -= RefreshShownSlot;
-        base._ExitTree();
     }
 }

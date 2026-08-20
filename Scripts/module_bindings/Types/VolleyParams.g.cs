@@ -17,6 +17,10 @@ namespace SpacetimeDB.Types
         public float Speed;
         [DataMember(Name = "count")]
         public uint Count;
+        [DataMember(Name = "line")]
+        public uint Line;
+        [DataMember(Name = "line_speed_step")]
+        public float LineSpeedStep;
         [DataMember(Name = "speed_variance")]
         public float SpeedVariance;
         [DataMember(Name = "angle_jitter")]
@@ -25,12 +29,16 @@ namespace SpacetimeDB.Types
         public VolleyParams(
             float Speed,
             uint Count,
+            uint Line,
+            float LineSpeedStep,
             float SpeedVariance,
             float AngleJitter
         )
         {
             this.Speed = Speed;
             this.Count = Count;
+            this.Line = Line;
+            this.LineSpeedStep = LineSpeedStep;
             this.SpeedVariance = SpeedVariance;
             this.AngleJitter = AngleJitter;
         }

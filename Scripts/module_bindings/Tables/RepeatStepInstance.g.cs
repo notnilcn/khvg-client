@@ -48,8 +48,11 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<RepeatStepInstance, string> TextureId { get; }
         public global::SpacetimeDB.Col<RepeatStepInstance, float> Lifetime { get; }
         public global::SpacetimeDB.Col<RepeatStepInstance, uint> Damage { get; }
+        public global::SpacetimeDB.Col<RepeatStepInstance, float> AngularSpeed { get; }
+        public global::SpacetimeDB.Col<RepeatStepInstance, float> SpeedAcceleration { get; }
         public global::SpacetimeDB.Col<RepeatStepInstance, float> RepeatInterval { get; }
         public global::SpacetimeDB.Col<RepeatStepInstance, uint> RepeatTarget { get; }
+        public global::SpacetimeDB.Col<RepeatStepInstance, float> AngleStep { get; }
         public global::SpacetimeDB.Col<RepeatStepInstance, float> NextStepDelay { get; }
         public global::SpacetimeDB.Col<RepeatStepInstance, uint> RepeatCount { get; }
 
@@ -64,8 +67,11 @@ namespace SpacetimeDB.Types
             TextureId = new global::SpacetimeDB.Col<RepeatStepInstance, string>(tableName, "texture_id");
             Lifetime = new global::SpacetimeDB.Col<RepeatStepInstance, float>(tableName, "lifetime");
             Damage = new global::SpacetimeDB.Col<RepeatStepInstance, uint>(tableName, "damage");
+            AngularSpeed = new global::SpacetimeDB.Col<RepeatStepInstance, float>(tableName, "angular_speed");
+            SpeedAcceleration = new global::SpacetimeDB.Col<RepeatStepInstance, float>(tableName, "speed_acceleration");
             RepeatInterval = new global::SpacetimeDB.Col<RepeatStepInstance, float>(tableName, "repeat_interval");
             RepeatTarget = new global::SpacetimeDB.Col<RepeatStepInstance, uint>(tableName, "repeat_target");
+            AngleStep = new global::SpacetimeDB.Col<RepeatStepInstance, float>(tableName, "angle_step");
             NextStepDelay = new global::SpacetimeDB.Col<RepeatStepInstance, float>(tableName, "next_step_delay");
             RepeatCount = new global::SpacetimeDB.Col<RepeatStepInstance, uint>(tableName, "repeat_count");
         }

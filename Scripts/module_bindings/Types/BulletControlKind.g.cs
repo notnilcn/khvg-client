@@ -13,5 +13,7 @@ namespace SpacetimeDB.Types
         Delete,
         Split,
         Attract,
+        DeleteRect,
+        SplitRect,
     }
 }

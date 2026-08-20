@@ -1,105 +1,105 @@
 [gd_scene format=3 uid="uid://bk4d3bkeqrqvu"]
 
-[ext_resource type="Script" uid="uid://cqiavfx25o6be" path="res://Scripts/Game/GameManager.cs" id="1_tyi0s"]
-[ext_resource type="Script" uid="uid://t5dudwr4e8ss" path="res://sstdbsdk/TableSubscriber.cs" id="2_gy5yi"]
-[ext_resource type="Script" uid="uid://kprjwmx8qekg" path="res://Scripts/Components/Catalog/CatalogComponent.cs" id="3_m2yr1"]
-[ext_resource type="Script" uid="uid://45drtd2g2weu" path="res://sstdbsdk/TableBinderComponent.cs" id="4_7iq6a"]
-[ext_resource type="Script" uid="uid://enddugsgfdov" path="res://Scripts/Components/Spawning/EntitySpawnerComponent.cs" id="5_cx7vy"]
-[ext_resource type="PackedScene" uid="uid://bbjjh55yrwyfn" path="res://Scenes/local_player.tscn" id="6_l35eo"]
-[ext_resource type="PackedScene" uid="uid://8oytx5u0vik3" path="res://Scenes/non_local_player.tscn" id="7_m3khh"]
-[ext_resource type="PackedScene" uid="uid://djjulhvulxtyc" path="res://Scenes/default_enemy.tscn" id="8_ivwoi"]
-[ext_resource type="PackedScene" uid="uid://i7v5ssc1g45q" path="res://Scenes/drop.tscn" id="9_cn1iq"]
-[ext_resource type="Script" uid="uid://cl7qy3eeo4jep" path="res://Scripts/Game/BulletManager.cs" id="10_3v7xy"]
-[ext_resource type="PackedScene" uid="uid://dly5ocjb0vcx4" path="res://Scenes/Components/Bullets/bullet_spawner_component.tscn" id="11_3mpvu"]
-[ext_resource type="PackedScene" uid="uid://dw7m1ev54lshc" path="res://Scenes/Components/Bullets/bullet_hit_router_component.tscn" id="12_wt7fs"]
-[ext_resource type="Script" uid="uid://dyg400ij28uph" path="res://Scripts/Components/Bullets/BulletControllerComponent.cs" id="13_56y5x"]
-[ext_resource type="Script" uid="uid://4vtm5wwxgp2d" path="res://Scripts/Components/Camera/CameraRigComponent.cs" id="14_6gy3g"]
-[ext_resource type="PackedScene" uid="uid://oq20q8miyvsa" path="res://Scenes/world_3d.tscn" id="15_m4c7q"]
-[ext_resource type="PackedScene" uid="uid://dxx5w0ohddwun" path="res://Scenes/Components/Lobby/lobby_component.tscn" id="16_q8iau"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="17_ul2am"]
-[ext_resource type="Script" uid="uid://evnlg4cc87jl" path="res://Scripts/Components/Camera/Camera2DPresenterComponent.cs" id="18_cxuc1"]
-[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="19_jusnc"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="20_lvxoh"]
-[ext_resource type="Script" uid="uid://c3l165fibt4wq" path="res://Scripts/Components/Camera/HexGridOverlayComponent.cs" id="21_t1dmr"]
-[ext_resource type="Script" uid="uid://wwivmweabnsm" path="res://Scripts/Components/Terrain/TerrainComponent.cs" id="22_hsset"]
-[ext_resource type="PackedScene" uid="uid://b1nvedybn2tn5" path="res://Scenes/Components/Terrain/tile_component.tscn" id="23_04uy7"]
-[ext_resource type="Script" uid="uid://bdh2fwurk1uh7" path="res://Scripts/Game/DebugOverlay.cs" id="24_cssk4"]
+[ext_resource type="Script" uid="uid://cqiavfx25o6be" path="res://Scripts/Game/GameManager.cs" id="1_vm72l"]
+[ext_resource type="Script" uid="uid://t5dudwr4e8ss" path="res://sstdbsdk/TableSubscriber.cs" id="2_22asu"]
+[ext_resource type="Script" uid="uid://kprjwmx8qekg" path="res://Scripts/Components/Catalog/CatalogComponent.cs" id="3_fkdbe"]
+[ext_resource type="Script" uid="uid://45drtd2g2weu" path="res://sstdbsdk/TableBinderComponent.cs" id="4_81klo"]
+[ext_resource type="Script" uid="uid://enddugsgfdov" path="res://Scripts/Components/Spawning/EntitySpawnerComponent.cs" id="5_tgy6u"]
+[ext_resource type="PackedScene" uid="uid://bbjjh55yrwyfn" path="res://Scenes/local_player.tscn" id="6_cwurv"]
+[ext_resource type="PackedScene" uid="uid://8oytx5u0vik3" path="res://Scenes/non_local_player.tscn" id="7_mucmn"]
+[ext_resource type="PackedScene" uid="uid://djjulhvulxtyc" path="res://Scenes/default_enemy.tscn" id="8_8m3t6"]
+[ext_resource type="PackedScene" uid="uid://i7v5ssc1g45q" path="res://Scenes/drop.tscn" id="9_ese38"]
+[ext_resource type="Script" uid="uid://cl7qy3eeo4jep" path="res://Scripts/Game/BulletManager.cs" id="10_oeip8"]
+[ext_resource type="PackedScene" uid="uid://dly5ocjb0vcx4" path="res://Scenes/Components/Bullets/bullet_spawner_component.tscn" id="11_xe308"]
+[ext_resource type="PackedScene" uid="uid://dw7m1ev54lshc" path="res://Scenes/Components/Bullets/bullet_hit_router_component.tscn" id="12_d3cha"]
+[ext_resource type="Script" uid="uid://dyg400ij28uph" path="res://Scripts/Components/Bullets/BulletControllerComponent.cs" id="13_i26dy"]
+[ext_resource type="Script" uid="uid://4vtm5wwxgp2d" path="res://Scripts/Components/Camera/CameraRigComponent.cs" id="14_lmoi6"]
+[ext_resource type="PackedScene" uid="uid://oq20q8miyvsa" path="res://Scenes/world_3d.tscn" id="15_6uxt2"]
+[ext_resource type="PackedScene" uid="uid://dxx5w0ohddwun" path="res://Scenes/Components/Lobby/lobby_component.tscn" id="16_ym3tv"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="17_bwj6o"]
+[ext_resource type="Script" uid="uid://evnlg4cc87jl" path="res://Scripts/Components/Camera/Camera2DPresenterComponent.cs" id="18_f3c8l"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="19_bu0y5"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="20_6a4tp"]
+[ext_resource type="Script" uid="uid://c3l165fibt4wq" path="res://Scripts/Components/Camera/HexGridOverlayComponent.cs" id="21_631el"]
+[ext_resource type="Script" uid="uid://wwivmweabnsm" path="res://Scripts/Components/Terrain/TerrainComponent.cs" id="22_vs120"]
+[ext_resource type="PackedScene" uid="uid://b1nvedybn2tn5" path="res://Scenes/Components/Terrain/tile_component.tscn" id="23_v2cs8"]
+[ext_resource type="Script" uid="uid://bdh2fwurk1uh7" path="res://Scripts/Game/DebugOverlay.cs" id="24_32sfa"]
 
 [sub_resource type="Resource" id="Resource_jkdf5"]
-script = ExtResource("20_lvxoh")
+script = ExtResource("20_6a4tp")
 duration = 0.0
 
-[node name="Characters" type="Node2D" unique_id=24548255]
-script = ExtResource("1_tyi0s")
+[node name="game" type="Node2D" unique_id=24548255]
+script = ExtResource("1_vm72l")
 
 [node name="TableSubscriber" type="Node" parent="." unique_id=2063233651]
-script = ExtResource("2_gy5yi")
+script = ExtResource("2_22asu")
 
 [node name="CatalogComponent" type="Node" parent="." unique_id=1072502500]
-script = ExtResource("3_m2yr1")
+script = ExtResource("3_fkdbe")
 
 [node name="AllTexturesBinder" type="Node" parent="CatalogComponent" unique_id=977226497]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "AllTextures"
 
 [node name="AllItemsBinder" type="Node" parent="CatalogComponent" unique_id=1961804414]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "AllItems"
 
 [node name="AllEnchantmentsBinder" type="Node" parent="CatalogComponent" unique_id=1591097744]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "AllEnchantments"
 
 [node name="EntitySpawnerComponent" type="Node" parent="." unique_id=1156729041]
-script = ExtResource("5_cx7vy")
-LocalPlayerScene = ExtResource("6_l35eo")
-NonLocalPlayerScene = ExtResource("7_m3khh")
-EnemyScene = ExtResource("8_ivwoi")
-DropScene = ExtResource("9_cn1iq")
+script = ExtResource("5_tgy6u")
+LocalPlayerScene = ExtResource("6_cwurv")
+NonLocalPlayerScene = ExtResource("7_mucmn")
+EnemyScene = ExtResource("8_8m3t6")
+DropScene = ExtResource("9_ese38")
 
 [node name="LocalPlayerBinder" type="Node" parent="EntitySpawnerComponent" unique_id=738526938]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "LocalPlayer"
 
 [node name="NearbyRemotePlayersBinder" type="Node" parent="EntitySpawnerComponent" unique_id=1992952743]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "NearbyRemotePlayers"
 
 [node name="NearbyEnemiesBinder" type="Node" parent="EntitySpawnerComponent" unique_id=1559288739]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "NearbyEnemies"
 
 [node name="NearbyLootDropsBinder" type="Node" parent="EntitySpawnerComponent" unique_id=1952409924]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "NearbyLootDrops"
 
 [node name="BulletManager" type="Node2D" parent="." unique_id=347694252 node_paths=PackedStringArray("BlastBullets")]
 z_index = 1
-script = ExtResource("10_3v7xy")
+script = ExtResource("10_oeip8")
 BlastBullets = NodePath("BlastBullets")
 
 [node name="BlastBullets" type="BulletFactory2D" parent="BulletManager" unique_id=1590443171]
 
-[node name="BulletSpawnerComponent" parent="BulletManager" unique_id=1703170528 instance=ExtResource("11_3mpvu")]
+[node name="BulletSpawnerComponent" parent="BulletManager" unique_id=1703170528 instance=ExtResource("11_xe308")]
 
-[node name="BulletHitRouterComponent" parent="BulletManager" unique_id=72256238 instance=ExtResource("12_wt7fs")]
+[node name="BulletHitRouterComponent" parent="BulletManager" unique_id=72256238 instance=ExtResource("12_d3cha")]
 
 [node name="BulletControllerComponent" type="Node" parent="BulletManager" unique_id=77774317]
-script = ExtResource("13_56y5x")
+script = ExtResource("13_i26dy")
 
 [node name="BulletControlEventBinder" type="Node" parent="BulletManager/BulletControllerComponent" unique_id=1670808940]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 TableName = "BulletControlEvent"
 
 [node name="CameraRigComponent" type="Node" parent="." unique_id=429369880]
-script = ExtResource("14_6gy3g")
+script = ExtResource("14_lmoi6")
 PitchMax = 0.0
 
 [node name="3D" type="CanvasLayer" parent="." unique_id=358806965]
@@ -121,11 +121,11 @@ handle_input_locally = false
 size = Vector2i(426, 240)
 render_target_update_mode = 0
 
-[node name="World3DComponent" parent="3D/SubViewportContainer/SubViewport" unique_id=1360330812 instance=ExtResource("15_m4c7q")]
+[node name="World3DComponent" parent="3D/SubViewportContainer/SubViewport" unique_id=1360330812 instance=ExtResource("15_6uxt2")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=152855753]
 
-[node name="LobbyComponent" parent="UI" unique_id=596879783 instance=ExtResource("16_q8iau")]
+[node name="LobbyComponent" parent="UI" unique_id=596879783 instance=ExtResource("16_ym3tv")]
 
 [node name="MainCamera2D" type="Camera2D" parent="." unique_id=1285666996]
 top_level = true
@@ -136,16 +136,16 @@ editor_draw_limits = true
 [node name="PhantomCameraHost" type="Node" parent="MainCamera2D" unique_id=856034263]
 process_priority = 300
 process_physics_priority = 300
-script = ExtResource("17_ul2am")
+script = ExtResource("17_bwj6o")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Camera2DPresenterComponent" type="Node2D" parent="." unique_id=1135188737]
-script = ExtResource("18_cxuc1")
+script = ExtResource("18_f3c8l")
 
 [node name="MainMenuPhantomCamera2D" type="Node2D" parent="." unique_id=891273475]
 unique_name_in_owner = true
 position = Vector2(320, 180)
-script = ExtResource("19_jusnc")
+script = ExtResource("19_bu0y5")
 priority = 1
 tween_resource = SubResource("Resource_jkdf5")
 draw_limits = true
@@ -153,37 +153,37 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="HexGridOverlayComponent" type="Node2D" parent="." unique_id=596614871]
 visible = false
-script = ExtResource("21_t1dmr")
+script = ExtResource("21_631el")
 
 [node name="MapConfigBinder" type="Node" parent="HexGridOverlayComponent" unique_id=866081349]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "MapConfig"
 
 [node name="TerrainComponent" type="Node2D" parent="." unique_id=1575457739]
 z_index = -10
-script = ExtResource("22_hsset")
-TileScene = ExtResource("23_04uy7")
+script = ExtResource("22_vs120")
+TileScene = ExtResource("23_v2cs8")
 
 [node name="MapConfigBinder" type="Node" parent="TerrainComponent" unique_id=1580265458]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "MapConfig"
 
 [node name="TerrainTilesBinder" type="Node" parent="TerrainComponent" unique_id=1504131275]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "NearbyTerrainTiles"
 
 [node name="HexDecorBinder" type="Node" parent="TerrainComponent" unique_id=259520872]
-script = ExtResource("4_7iq6a")
+script = ExtResource("4_81klo")
 ReplayExistingRows = true
 TableName = "NearbyHexDecor"
 
 [node name="DebugOverlay" type="CanvasLayer" parent="." unique_id=1183131993]
 layer = 100
 visible = false
-script = ExtResource("24_cssk4")
+script = ExtResource("24_32sfa")
 
 [node name="Label" type="Label" parent="DebugOverlay" unique_id=1570498550]
 offset_left = 8.0

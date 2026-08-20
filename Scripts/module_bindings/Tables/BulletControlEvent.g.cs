@@ -46,6 +46,7 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<BulletControlEvent, float> Radius { get; }
         public global::SpacetimeDB.Col<BulletControlEvent, float> TargetX { get; }
         public global::SpacetimeDB.Col<BulletControlEvent, float> TargetY { get; }
+        public global::SpacetimeDB.Col<BulletControlEvent, float> Duration { get; }
         public global::SpacetimeDB.Col<BulletControlEvent, SpacetimeDB.Identity> CastBy { get; }
 
         public BulletControlEventCols(string tableName)
@@ -57,6 +58,7 @@ namespace SpacetimeDB.Types
             Radius = new global::SpacetimeDB.Col<BulletControlEvent, float>(tableName, "radius");
             TargetX = new global::SpacetimeDB.Col<BulletControlEvent, float>(tableName, "target_x");
             TargetY = new global::SpacetimeDB.Col<BulletControlEvent, float>(tableName, "target_y");
+            Duration = new global::SpacetimeDB.Col<BulletControlEvent, float>(tableName, "duration");
             CastBy = new global::SpacetimeDB.Col<BulletControlEvent, SpacetimeDB.Identity>(tableName, "cast_by");
         }
     }

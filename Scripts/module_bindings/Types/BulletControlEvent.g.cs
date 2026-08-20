@@ -27,6 +27,8 @@ namespace SpacetimeDB.Types
         public float TargetX;
         [DataMember(Name = "target_y")]
         public float TargetY;
+        [DataMember(Name = "duration")]
+        public float Duration;
         [DataMember(Name = "cast_by")]
         public SpacetimeDB.Identity CastBy;
 
@@ -38,6 +40,7 @@ namespace SpacetimeDB.Types
             float Radius,
             float TargetX,
             float TargetY,
+            float Duration,
             SpacetimeDB.Identity CastBy
         )
         {
@@ -48,6 +51,7 @@ namespace SpacetimeDB.Types
             this.Radius = Radius;
             this.TargetX = TargetX;
             this.TargetY = TargetY;
+            this.Duration = Duration;
             this.CastBy = CastBy;
         }
 

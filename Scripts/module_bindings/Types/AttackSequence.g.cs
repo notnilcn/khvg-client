@@ -17,14 +17,18 @@ namespace SpacetimeDB.Types
         public System.Collections.Generic.List<SequenceStepDef> Steps;
         [DataMember(Name = "start_delay")]
         public float StartDelay;
+        [DataMember(Name = "loop_delay")]
+        public float LoopDelay;
 
         public AttackSequence(
             System.Collections.Generic.List<SequenceStepDef> Steps,
-            float StartDelay
+            float StartDelay,
+            float LoopDelay
         )
         {
             this.Steps = Steps;
             this.StartDelay = StartDelay;
+            this.LoopDelay = LoopDelay;
         }
 
         public AttackSequence()

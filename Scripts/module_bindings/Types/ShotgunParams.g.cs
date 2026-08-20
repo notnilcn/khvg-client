@@ -17,6 +17,10 @@ namespace SpacetimeDB.Types
         public float Speed;
         [DataMember(Name = "count")]
         public uint Count;
+        [DataMember(Name = "line")]
+        public uint Line;
+        [DataMember(Name = "line_speed_step")]
+        public float LineSpeedStep;
         [DataMember(Name = "spread")]
         public float Spread;
         [DataMember(Name = "speed_variance")]
@@ -27,6 +31,8 @@ namespace SpacetimeDB.Types
         public ShotgunParams(
             float Speed,
             uint Count,
+            uint Line,
+            float LineSpeedStep,
             float Spread,
             float SpeedVariance,
             float LifetimeVariance
@@ -34,6 +40,8 @@ namespace SpacetimeDB.Types
         {
             this.Speed = Speed;
             this.Count = Count;
+            this.Line = Line;
+            this.LineSpeedStep = LineSpeedStep;
             this.Spread = Spread;
             this.SpeedVariance = SpeedVariance;
             this.LifetimeVariance = LifetimeVariance;

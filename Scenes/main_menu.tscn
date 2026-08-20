@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://b6lwr7bsg1b0u"]
 
-[ext_resource type="Script" uid="uid://bwx5qb387ayfm" path="res://Scripts/Game/LobbyGui.cs" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://bwx5qb387ayfm" path="res://Scripts/Game/LobbyGui.cs" id="1_tt5f1"]
 
-[node name="main" type="Control" unique_id=847043116]
+[node name="MainMenu" type="Control" unique_id=847043116]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jjgbg")
+script = ExtResource("1_tt5f1")
 
 [node name="MainMenu" type="CenterContainer" parent="." unique_id=868648525]
 layout_mode = 1

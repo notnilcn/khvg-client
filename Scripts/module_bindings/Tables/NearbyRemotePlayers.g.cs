@@ -43,7 +43,8 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<PlayerPosition, SpacetimeDB.Identity> PlayerId { get; }
         public global::SpacetimeDB.Col<PlayerPosition, float> X { get; }
         public global::SpacetimeDB.Col<PlayerPosition, float> Y { get; }
-        public global::SpacetimeDB.Col<PlayerPosition, float> Rotation { get; }
+        public global::SpacetimeDB.Col<PlayerPosition, float> MovementDirection { get; }
+        public global::SpacetimeDB.Col<PlayerPosition, float> MovementSpeed { get; }
         public global::SpacetimeDB.Col<PlayerPosition, long> ChunkIndex { get; }
 
         public NearbyRemotePlayersCols(string tableName)
@@ -52,7 +53,8 @@ namespace SpacetimeDB.Types
             PlayerId = new global::SpacetimeDB.Col<PlayerPosition, SpacetimeDB.Identity>(tableName, "player_id");
             X = new global::SpacetimeDB.Col<PlayerPosition, float>(tableName, "x");
             Y = new global::SpacetimeDB.Col<PlayerPosition, float>(tableName, "y");
-            Rotation = new global::SpacetimeDB.Col<PlayerPosition, float>(tableName, "rotation");
+            MovementDirection = new global::SpacetimeDB.Col<PlayerPosition, float>(tableName, "movement_direction");
+            MovementSpeed = new global::SpacetimeDB.Col<PlayerPosition, float>(tableName, "movement_speed");
             ChunkIndex = new global::SpacetimeDB.Col<PlayerPosition, long>(tableName, "chunk_index");
         }
     }

@@ -48,6 +48,8 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<SingleStepDef, string> TextureId { get; }
         public global::SpacetimeDB.Col<SingleStepDef, float> Lifetime { get; }
         public global::SpacetimeDB.Col<SingleStepDef, uint> Damage { get; }
+        public global::SpacetimeDB.Col<SingleStepDef, float> AngularSpeed { get; }
+        public global::SpacetimeDB.Col<SingleStepDef, float> SpeedAcceleration { get; }
         public global::SpacetimeDB.Col<SingleStepDef, float> NextStepDelay { get; }
 
         public SingleStepDefCols(string tableName)
@@ -61,6 +63,8 @@ namespace SpacetimeDB.Types
             TextureId = new global::SpacetimeDB.Col<SingleStepDef, string>(tableName, "texture_id");
             Lifetime = new global::SpacetimeDB.Col<SingleStepDef, float>(tableName, "lifetime");
             Damage = new global::SpacetimeDB.Col<SingleStepDef, uint>(tableName, "damage");
+            AngularSpeed = new global::SpacetimeDB.Col<SingleStepDef, float>(tableName, "angular_speed");
+            SpeedAcceleration = new global::SpacetimeDB.Col<SingleStepDef, float>(tableName, "speed_acceleration");
             NextStepDelay = new global::SpacetimeDB.Col<SingleStepDef, float>(tableName, "next_step_delay");
         }
     }

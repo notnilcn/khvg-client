@@ -27,6 +27,8 @@ namespace SpacetimeDB.Types
         public bool StepWaiting;
         [DataMember(Name = "start_delaying")]
         public bool StartDelaying;
+        [DataMember(Name = "loop_waiting")]
+        public bool LoopWaiting;
 
         public EnemyAttack(
             ulong AttackId,
@@ -35,7 +37,8 @@ namespace SpacetimeDB.Types
             uint StepIndex,
             SpacetimeDB.Timestamp StepTimer,
             bool StepWaiting,
-            bool StartDelaying
+            bool StartDelaying,
+            bool LoopWaiting
         )
         {
             this.AttackId = AttackId;
@@ -45,6 +48,7 @@ namespace SpacetimeDB.Types
             this.StepTimer = StepTimer;
             this.StepWaiting = StepWaiting;
             this.StartDelaying = StartDelaying;
+            this.LoopWaiting = LoopWaiting;
         }
 
         public EnemyAttack()

@@ -7,10 +7,10 @@ using Godot;
 /// The six allocatable stats (str/wis/dex/dps/sup/art) each get a "+" Button, visible
 /// only while the player has unspent skill points, calling the AllocateStat reducer.
 /// Defense is modifier-only (gear/buffs) — shown, but not allocatable.
-/// Entity IS the LocalPlayer (registration walks ancestors across the instanced
+/// Reaches the owning LocalPlayer through the ancestor walk (across the instanced
 /// inventory_panel.tscn boundary).
 /// </summary>
-public partial class StatsSidebarComponent : ControlComponent
+public partial class StatsSidebar : Control
 {
     [Export] public Label LevelLabel { get; set; } = null!;
     [Export] public Label HpLabel { get; set; } = null!;
@@ -38,9 +38,9 @@ public partial class StatsSidebarComponent : ControlComponent
 
     private LocalPlayer? player;
 
-    protected override void OnRegistered()
+    public override void _Ready()
     {
-        player = Entity as LocalPlayer;
+        player = this.GetAncestor<LocalPlayer>();
         if (player == null) return;
         player.StatsChanged += HandleStatsChanged;
         for (int i = 0; i < AllocateButtons.Count && i < Allocatable.Length; i++)
@@ -72,6 +72,5 @@ public partial class StatsSidebarComponent : ControlComponent
     {
         if (player != null)
             player.StatsChanged -= HandleStatsChanged;
-        base._ExitTree();
     }
 }

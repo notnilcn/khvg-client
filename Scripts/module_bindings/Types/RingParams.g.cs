@@ -17,14 +17,22 @@ namespace SpacetimeDB.Types
         public float Speed;
         [DataMember(Name = "count")]
         public uint Count;
+        [DataMember(Name = "line")]
+        public uint Line;
+        [DataMember(Name = "line_speed_step")]
+        public float LineSpeedStep;
 
         public RingParams(
             float Speed,
-            uint Count
+            uint Count,
+            uint Line,
+            float LineSpeedStep
         )
         {
             this.Speed = Speed;
             this.Count = Count;
+            this.Line = Line;
+            this.LineSpeedStep = LineSpeedStep;
         }
 
         public RingParams()

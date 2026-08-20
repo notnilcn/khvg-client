@@ -48,8 +48,11 @@ namespace SpacetimeDB.Types
         public global::SpacetimeDB.Col<RepeatStepDef, string> TextureId { get; }
         public global::SpacetimeDB.Col<RepeatStepDef, float> Lifetime { get; }
         public global::SpacetimeDB.Col<RepeatStepDef, uint> Damage { get; }
+        public global::SpacetimeDB.Col<RepeatStepDef, float> AngularSpeed { get; }
+        public global::SpacetimeDB.Col<RepeatStepDef, float> SpeedAcceleration { get; }
         public global::SpacetimeDB.Col<RepeatStepDef, float> RepeatInterval { get; }
         public global::SpacetimeDB.Col<RepeatStepDef, uint> RepeatTarget { get; }
+        public global::SpacetimeDB.Col<RepeatStepDef, float> AngleStep { get; }
         public global::SpacetimeDB.Col<RepeatStepDef, float> NextStepDelay { get; }
 
         public RepeatStepDefCols(string tableName)
@@ -63,8 +66,11 @@ namespace SpacetimeDB.Types
             TextureId = new global::SpacetimeDB.Col<RepeatStepDef, string>(tableName, "texture_id");
             Lifetime = new global::SpacetimeDB.Col<RepeatStepDef, float>(tableName, "lifetime");
             Damage = new global::SpacetimeDB.Col<RepeatStepDef, uint>(tableName, "damage");
+            AngularSpeed = new global::SpacetimeDB.Col<RepeatStepDef, float>(tableName, "angular_speed");
+            SpeedAcceleration = new global::SpacetimeDB.Col<RepeatStepDef, float>(tableName, "speed_acceleration");
             RepeatInterval = new global::SpacetimeDB.Col<RepeatStepDef, float>(tableName, "repeat_interval");
             RepeatTarget = new global::SpacetimeDB.Col<RepeatStepDef, uint>(tableName, "repeat_target");
+            AngleStep = new global::SpacetimeDB.Col<RepeatStepDef, float>(tableName, "angle_step");
             NextStepDelay = new global::SpacetimeDB.Col<RepeatStepDef, float>(tableName, "next_step_delay");
         }
     }

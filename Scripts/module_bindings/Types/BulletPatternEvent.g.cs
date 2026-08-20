@@ -37,6 +37,10 @@ namespace SpacetimeDB.Types
         public string TextureId;
         [DataMember(Name = "lifetime")]
         public float Lifetime;
+        [DataMember(Name = "angular_speed")]
+        public float AngularSpeed;
+        [DataMember(Name = "speed_acceleration")]
+        public float SpeedAcceleration;
         [DataMember(Name = "chunk_index")]
         public long ChunkIndex;
 
@@ -53,6 +57,8 @@ namespace SpacetimeDB.Types
             SpacetimeDB.Identity? Target,
             string TextureId,
             float Lifetime,
+            float AngularSpeed,
+            float SpeedAcceleration,
             long ChunkIndex
         )
         {
@@ -68,6 +74,8 @@ namespace SpacetimeDB.Types
             this.Target = Target;
             this.TextureId = TextureId;
             this.Lifetime = Lifetime;
+            this.AngularSpeed = AngularSpeed;
+            this.SpeedAcceleration = SpeedAcceleration;
             this.ChunkIndex = ChunkIndex;
         }
 

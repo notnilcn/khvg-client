@@ -12,7 +12,8 @@ namespace SpacetimeDB.Types
         SpacetimeDB.Unit Heal,
         ConsumableBuffEffect Buff,
         float DeleteBullets,
-        float SplitBullets,
-        float AttractBullets
+        RectParams SplitBullets,
+        float AttractBullets,
+        RectParams DeleteBulletsInRect
     )>;
 }

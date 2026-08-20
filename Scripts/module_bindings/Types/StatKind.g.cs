@@ -18,5 +18,6 @@ namespace SpacetimeDB.Types
         Artisan,
         Hp,
         Defense,
+        BaseSpeed,
     }
 }

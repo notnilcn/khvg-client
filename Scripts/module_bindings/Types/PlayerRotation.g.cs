@@ -11,43 +11,31 @@ namespace SpacetimeDB.Types
 {
     [SpacetimeDB.Type]
     [DataContract]
-    public sealed partial class PlayerPosition
+    public sealed partial class PlayerRotation
     {
         [DataMember(Name = "profile_id")]
         public ulong ProfileId;
         [DataMember(Name = "player_id")]
         public SpacetimeDB.Identity PlayerId;
-        [DataMember(Name = "x")]
-        public float X;
-        [DataMember(Name = "y")]
-        public float Y;
-        [DataMember(Name = "movement_direction")]
-        public float MovementDirection;
-        [DataMember(Name = "movement_speed")]
-        public float MovementSpeed;
+        [DataMember(Name = "screen_rotation")]
+        public float ScreenRotation;
         [DataMember(Name = "chunk_index")]
         public long ChunkIndex;
 
-        public PlayerPosition(
+        public PlayerRotation(
             ulong ProfileId,
             SpacetimeDB.Identity PlayerId,
-            float X,
-            float Y,
-            float MovementDirection,
-            float MovementSpeed,
+            float ScreenRotation,
             long ChunkIndex
         )
         {
             this.ProfileId = ProfileId;
             this.PlayerId = PlayerId;
-            this.X = X;
-            this.Y = Y;
-            this.MovementDirection = MovementDirection;
-            this.MovementSpeed = MovementSpeed;
+            this.ScreenRotation = ScreenRotation;
             this.ChunkIndex = ChunkIndex;
         }
 
-        public PlayerPosition()
+        public PlayerRotation()
         {
         }
     }

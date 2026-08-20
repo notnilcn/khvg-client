@@ -25,6 +25,8 @@ namespace SpacetimeDB.Types
         public uint MaxHp;
         [DataMember(Name = "defense")]
         public int Defense;
+        [DataMember(Name = "base_speed")]
+        public float BaseSpeed;
 
         public PlayerData(
             ulong ProfileId,
@@ -32,7 +34,8 @@ namespace SpacetimeDB.Types
             uint Xp,
             uint Hp,
             uint MaxHp,
-            int Defense
+            int Defense,
+            float BaseSpeed
         )
         {
             this.ProfileId = ProfileId;
@@ -41,6 +44,7 @@ namespace SpacetimeDB.Types
             this.Hp = Hp;
             this.MaxHp = MaxHp;
             this.Defense = Defense;
+            this.BaseSpeed = BaseSpeed;
         }
 
         public PlayerData()

@@ -29,6 +29,10 @@ namespace SpacetimeDB.Types
         public float Lifetime;
         [DataMember(Name = "damage")]
         public uint Damage;
+        [DataMember(Name = "angular_speed")]
+        public float AngularSpeed;
+        [DataMember(Name = "speed_acceleration")]
+        public float SpeedAcceleration;
 
         public MultiShot(
             PatternType PatternType,
@@ -38,7 +42,9 @@ namespace SpacetimeDB.Types
             float BaseAngleOffset,
             string TextureId,
             float Lifetime,
-            uint Damage
+            uint Damage,
+            float AngularSpeed,
+            float SpeedAcceleration
         )
         {
             this.PatternType = PatternType;
@@ -49,6 +55,8 @@ namespace SpacetimeDB.Types
             this.TextureId = TextureId;
             this.Lifetime = Lifetime;
             this.Damage = Damage;
+            this.AngularSpeed = AngularSpeed;
+            this.SpeedAcceleration = SpeedAcceleration;
         }
 
         public MultiShot()
